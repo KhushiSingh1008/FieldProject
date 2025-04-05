@@ -1,15 +1,21 @@
 import React from 'react';
 import { Course } from '../Types/Course';
+import { useNavigate } from 'react-router-dom';
 import './CourseCard.css';
 
 interface CourseCardProps {
   course: Course;
-  onClick: (courseId: string) => void;
 }
 
-const CourseCard: React.FC<CourseCardProps> = ({ course, onClick }) => {
+const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/course/${course.id}`);
+  };
+
   return (
-    <div className="course-card" onClick={() => onClick(course.id)}>
+    <div className="course-card" onClick={handleClick}>
       <div className="course-image-container">
         <img src={course.imageUrl} alt={course.title} className="course-image" />
         <span className="course-level">{course.level}</span>

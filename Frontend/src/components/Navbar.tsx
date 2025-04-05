@@ -22,6 +22,10 @@ const Navbar: React.FC = () => {
         <a href="#why-neoshala" className="nav-link">About Us</a>
         <Link to="/explore" className="nav-link">Explore</Link>
         
+        {currentUser && (
+          <Link to="/search" className="nav-link">Search</Link>
+        )}
+        
         {currentUser ? (
           <>
             {userRole === 'student' && (

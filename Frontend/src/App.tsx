@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
+import { useAuth } from './context/AuthContext';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import CheckoutU from './pages/CheckoutU';
@@ -12,6 +13,7 @@ import ProfilePage from './pages/ProfilePage';
 import AddedCoursesT from './pages/AddedCoursesT';
 import CourseDetailPage from './pages/CourseDetailPage';
 import ProtectedRoute from './components/ProtectedRoute';
+import SearchPage from './pages/SearchPage';
 import './App.css';
 
 const App = () => {
@@ -58,6 +60,12 @@ const App = () => {
                   <ProfilePage />
                 </ProtectedRoute>
               } />
+
+              <Route path="/search" element={
+                <ProtectedRoute>
+                  <SearchPage />
+                </ProtectedRoute>
+              }/>
 
               {/* Fallback route for undefined paths */}
               <Route path="*" element={<Navigate to="/" replace />} />
